@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سبد - صفحه اصلی</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.bunny.net/css?family=vazirmatn:400,500,700" rel="stylesheet" />
+<link rel="preconnect" href="https://www.gstatic.com">
+<link rel="preconnect" href="https://technobuyuserauth.firebaseapp.com">
+
+</head>
+<body>
+
+  
+
+<div id="loading-bar-container">
+    <div id="loading-bar"></div>
+</div>
+
+
+<!-- ---------- باکس بالای صفحه شامل کلیدها ---------- -->
+<header class="main-header">
+    <div class="header-container">
+        <div class="header-right">
+            <div class="logo-box">
+                <img src="https://img.icons8.com/ios-filled/50/2196F3/shopping-cart.png" alt="Logo" id="main-logo">
+            </div>
+        </div>
+
+<div class="header-left">
+    <div class="user-menu-container">
+        <button class="auth-btn" onclick="document.getElementById('auth-modal').style.display='block'">ورود / ثبت‌نام</button>
+        
+<div id="user-dropdown" class="dropdown-content">
+    <div class="dropdown-header">
+        <span id="member-since-display" style="font-size: 11px; color: #888;">در حال محاسبه...</span>
+    </div>
+    <hr>
+    <a href="#"><img src="https://img.icons8.com/ios/18/777777/user.png"> پروفایل من</a>
+    
+    <a href="javascript:void(0)" onclick="openWishlistModal()">
+        <img src="https://img.icons8.com/ios/18/777777/like.png"> لیست علاقه‌مندی‌ها
+    </a>
+    
+    <a href="#" id="logout-link" class="logout-item" onclick="handleLogout()">
+        <img src="https://img.icons8.com/ios/18/ff4d4d/exit.png"> خروج از حساب
+    </a>
+</div>
+    </div>
+    <div class="theme-switch-wrapper" id="switchBg">
+        <div class="switch-bg">
+            <div class="switch-circle"></div>
+        </div>
+    </div>
+</div>
+    </div>
+</header>
+
+
+<!-- ---------- فرم ثبت نام ورود---------- -->
+
+<div id="auth-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="document.getElementById('auth-modal').style.display='none'">&times;</span>
+        <div class="auth-tabs">
+            <button class="tab-btn active" onclick="switchTab('login')">ورود</button>
+            <button class="tab-btn" onclick="switchTab('signup')">ثبت‌نام</button>
+        </div>
+        
+<form id="login-form" class="auth-form" onsubmit="handleLogin(event)">
+    <input type="email" id="login-email" placeholder="ایمیل" required>
+    <input type="password" id="login-password" placeholder="رمز عبور" required>
+    <button type="submit" class="submit-btn">ورود</button>
+</form>
+
+<form id="signup-form" class="auth-form" style="display: none;" onsubmit="handleSignup(event)">
+    <input type="text" id="reg-name" placeholder="نام و نام خانوادگی (فارسی)" required>
+    <input type="email" id="reg-email" placeholder="ایمیل" required>
+    <input type="password" id="reg-password" placeholder="رمز عبور (حداقل ۶ کاراکتر)" required>
+    <button type="submit" class="submit-btn">ایجاد حساب کاربری</button>
+</form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ---------- مجموعه کامل: سرچ بار + همبرگر + منوی دسته بندی + فیلترهای زیر ---------- -->
+<div class="fixed-wrapper">
+
+
+  <!-- تصویر-->
+<div class="hero-section">
+        <img src="PNG\Character.png" alt=""" class="hero-image">
+       
+        
+    </div>
+
+
+
+  <!-- سرچ بار + همبرگر -->
+  <div class="search-wrapper">
+    <input type="text" id="search" class="search-bar" placeholder="دنبال چی می‌گردی...">
+    <div id="hamburger" class="hamburger">&#9776;</div>
+  </div>
+
+  <!-- دسته‌ بندی‌ها -->
+  <div id="dropdown" class="dropdown-menu"></div>
+
+  <div id="quickAccessBar" class="quick-access-bar"></div>
+
+</div>
+
+
+
+
+
+
+<!-- بعد کد JS خودت -->
+ 
+<script src="script.js"></script>
+
+
+
+
+
+
+
+
+<div id="priority-footer">
+
+
+<div class="priority-card">
+    <div class="priority-manager">
+        <div class="priority-actions">
+            <div id="add-priority-btn" class="add-step-circle">
+                <img src="https://img.icons8.com/ios-glyphs/30/f27121/plus-math.png">
+            </div>
+        </div>
+
+        <div class="scroll-arrow right" onclick="scrollPriority('right')">›</div>
+
+        <div id="priority-content-area" class="priority-content">
+            <div id="selected-steps" class="steps-wrapper"></div>
+            <div id="priority-selection-list" class="selection-inner-list"></div>
+            <p id="priority-guide-text" class="guide-text">می‌توانی با اضافه کردن و تغییر دادن ترتیب اولویت‌ها، چیزی که می‌خواهی را پیدا کنی.</p>
+        </div>
+
+        <div class="scroll-arrow left" onclick="scrollPriority('left')">‹</div>
+    </div>
+</div>
+
+
+</div>
+
+        <div id="priority-list"></div>
+    </div>
+</div>
+
+<div id="product-results" class="products-grid"></div>
+
+
+<!-- برگشت به بالا-->
+<div id="back-to-top" onclick="resetPage()" style="position: fixed; bottom: 30px; right: 30px; width: 55px; height: 55px; background: #2196F3; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 10000; transition: 0.3s; transform: scale(0); opacity: 0;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+<script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<!--   مورد علاقه ها-->
+<div id="wishlist-modal" class="auth-modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeWishlist()">&times;</span>
+        <h2>لیست مورد علاقه‌های من</h2>
+        <div id="wishlist-items-container" class="products-grid">
+            </div>
+    </div>
+</div>
+
+<!--  اضافه کردن به لیست-->
+
+<div id="save-to-list-modal" class="auth-modal" style="display:none;">
+    <div class="modal-content" style="max-width: 400px;">
+        <span class="close-btn" onclick="closeSaveModal()">&times;</span>
+        <h3 style="text-align: center; margin-bottom: 20px;">ذخیره در لیست</h3>
+        
+        <div id="lists-container">
+            </div>
+
+        <hr style="margin: 20px 0; opacity: 0.2;">
+        
+        <div class="new-list-area">
+            <input type="text" id="new-list-name" placeholder="نام لیست جدید..." 
+                   style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 10px;">
+            <button onclick="createNewListAndSave()" class="auth-submit-btn" style="width: 100%; background: #28a745;">+ ساخت لیست جدید</button>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

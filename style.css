@@ -1,0 +1,1097 @@
+/* ==========================
+   تنظیمات پایه
+========================== */
+
+:root {
+    /* رنگ اصلی نارنجی */
+    --primary-color: #f27121; 
+    /* رنگ ثانویه یا روشن‌تر برای هاور و گرادینت */
+    --primary-light: #ff9800;
+    /* رنگ سایه نارنجی */
+    --primary-shadow: rgba(242, 113, 33, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+body {
+    overflow-y: auto !important; /* فعال کردن اسکرول طبیعی */
+    overflow-x: hidden;
+    height: auto !important; /* حذف محدودیت ارتفاع */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px; /* فاصله برای هدر ثابت */
+}
+
+
+
+
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #f5f5f5;
+    color: #181818;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* ==========================
+   انیمیشن تغییر رنگ اجزا
+========================== */
+body,
+.search-bar,
+.filter-btn,
+.category-item,
+.switch-bg,
+.switch-circle {
+    transition:
+        background-color 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+/* استایل یکپارچه برای دسته‌بندی‌ها و پیشنهادات */
+.category-item {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+/* افکت هوور رنگی - تغییر به نارنجی */
+.category-item:hover {
+    background-color: var(--primary-color); 
+    box-shadow: 0 8px 20px var(--primary-shadow);
+    border-color: transparent;
+}
+
+.category-item:hover span {
+    color: white;
+}
+
+.category-item:hover img {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-theme .category-item {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-theme .category-item:hover {
+    background-color: var(--primary-color);
+}
+
+/* ==========================
+   موج تغییر تم
+========================== */
+.theme-wave {
+    position: fixed;
+    pointer-events: none;
+    top: var(--wave-y);
+    left: var(--wave-x);
+    width: 0;
+    height: 0;
+    background: var(--wave-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.35;
+    z-index: 999;
+    animation: waveExpand 0.55s ease-out forwards;
+}
+
+@keyframes waveExpand {
+    to {
+        width: 2500px;
+        height: 2500px;
+        opacity: 0;
+    }
+}
+
+/* ==========================
+   حالت تاریک
+========================== */
+body.dark-theme {
+    background-color: #181818;
+    color: #f5f5f5;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+}
+
+body.dark-theme .search-bar {
+    background-color: #2a2a2a;
+    color: #fff;
+    border-color: #f5f5f5;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/search.png');
+}
+
+body.dark-theme .search-bar::placeholder {
+    color: #ccc;
+}
+
+body.dark-theme .filter-btn,
+body.dark-theme .category-item {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+body.dark-theme .category-item img,
+body.dark-theme .top-btn img {
+    filter: brightness(0) invert(1);
+}
+
+body.dark-theme .top-btn {
+    background-color: #3a3a3a;
+}
+
+/* ==========================
+   باکس بالای صفحه
+========================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-theme .main-header {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.logo-box img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+body.dark-theme #main-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* تنظیم چیدمان در هدر سمت چپ */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* فاصله بین دکمه ورود و سوییچ تم */
+}
+
+.user-menu-container {
+    position: relative; /* ضروری برای تنظیم موقعیت منو */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; /* منو از سمت راست دکمه تراز شود */
+    top: 130%; /* فاصله از بالای دکمه */
+    background-color: white;
+    min-width: 190px;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    z-index: 2000;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* استایل آیتم‌ها */
+.dropdown-content a {
+    padding: 12px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #444;
+    font-size: 13px;
+    transition: 0.2s;
+    direction: rtl; /* راست‌چین برای متن فارسی */
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+    color: #2196F3;
+}
+
+.dropdown-header {
+    padding: 10px;
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+    background-color: #fafafa;
+}
+
+.logout-item { color: #ff4d4d !important; }
+
+/* هماهنگی با حالت شب */
+body.dark-theme .dropdown-content {
+    background-color: #1e1e1e;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
+}
+body.dark-theme .dropdown-content a { color: #ccc; }
+body.dark-theme .dropdown-header { background-color: #252525; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.auth-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* اصلاح دکمه ورود در حالت تاریک (اگر می‌خواهی آن هم تم شب داشته باشد) */
+body.dark-theme .auth-btn {
+    border-color: #3c88c9;
+    color: #3c88c9;
+}
+
+.theme-switch-wrapper {
+    cursor: pointer;
+}
+
+.switch-bg {
+    width: 55px;
+    height: 28px;
+    background-color: #ffe9a9; /* رنگ روز */
+    border-radius: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.35s ease;
+}
+
+/* در حالت تاریک، پس‌زمینه سوئیچ آبی بماند */
+body.dark-theme .switch-bg {
+    background-color: #1f3b57; 
+}
+
+.switch-circle {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 26px;
+    height: 26px;
+    background-color: #ffcf47; /* رنگ خورشید */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease;
+}
+
+/* دایره متحرک در حالت شب آبی بماند */
+body.dark-theme .switch-circle {
+    background-color: #3c88c9; /* همان آبی که مد نظرت بود */
+    transform: translateX(27px);
+}
+
+
+
+/* ==========================
+   سوئیچ تم
+========================== */
+.theme-switch {
+    margin-right: 10px;
+}
+
+.switch-bg {
+    width: 55px;
+    height: 28px;
+    background-color: #ffe9a9;
+    border-radius: 40px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.35s ease;
+}
+
+.switch-circle {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 26px;
+    height: 26px;
+    background-color: #ffcf47;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.35s ease;
+}
+
+.switch-circle img {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    transition: all 0.3s ease;
+    filter: none !important;
+}
+
+.sun-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    visibility: visible;
+}
+.moon-icon {
+    opacity: 0;
+    transform: scale(0) rotate(-45deg);
+    visibility: hidden;
+}
+
+body.dark-theme .switch-bg {
+    background-color: #1f3b57;
+}
+
+body.dark-theme .switch-circle {
+    background-color: var(--primary-color);
+    transform: translateX(27px);
+}
+
+body.dark-theme .sun-icon {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+    visibility: hidden;
+}
+
+body.dark-theme .moon-icon {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+    visibility: visible;
+}
+
+/* ==========================
+   دکمه‌های بالا
+========================== */
+.top-btn {
+    margin: 0 4px;
+    padding: 6px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.top-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+
+
+
+
+/* ==========================
+   ورود و ثبت نام
+========================== */
+
+
+/* استایل مودال (پنجره پاپ‌آپ) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 3000; 
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+body.dark-theme .modal-content { background-color: #2a2a2a; color: white; }
+
+/* تب‌های سوئیچ بین ورود و ثبت‌نام */
+.auth-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; }
+.tab-btn { flex: 1; padding: 10px; border: none; background: none; cursor: pointer; font-family: inherit; font-weight: bold; color: #999; }
+.tab-btn.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); }
+
+/* فرم‌ها و اینپوت‌ها */
+.auth-form { display: flex; flex-direction: column; gap: 15px; }
+.auth-form input { padding: 12px; border-radius: 10px; border: 1px solid #ddd; font-family: inherit; outline: none; direction: rtl; }
+body.dark-theme .auth-form input { background: #333; border-color: #444; color: white; }
+
+.submit-btn { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+.submit-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+
+.close-modal { position: absolute; left: 20px; top: 15px; font-size: 25px; cursor: pointer; color: #999; }
+
+
+
+
+
+
+
+/* ==========================
+   wrapper وسط صفحه
+========================== */
+.fixed-wrapper {
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1001; /* بالاتر از همه */
+    transform: none !important; /* حذف جابه‌جایی که قبلاً داشتیم */
+}
+
+/* ==========================
+   سرچ + همبرگر
+========================== */
+.search-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #333;
+    font-size: 14px;
+    direction: rtl;
+    text-align: right;
+    background-color: #f5f5f5;
+    font-family: 'Vazirmatn', sans-serif;
+    background-image: url('https://img.icons8.com/ios-filled/50/000000/search.png');
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 20px;
+}
+
+.hamburger {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.search-suggestions {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: inherit;
+    backdrop-filter: blur(2px);
+    border-radius: 14px;
+    padding: 10px;
+    transition: all 0.25s ease;
+}
+
+.search-suggestions.active {
+    display: flex;
+    margin-top: 5px;
+    max-height: 400px;
+}
+
+.search-suggestions div {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 13px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-suggestions div:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+body.dark-theme .search-suggestions div {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+body.dark-theme .search-suggestions div:hover {
+    background-color: rgba(255,255,255,0.08);
+}
+
+/* ==========================
+   منوی دسته‌بندی
+========================== */
+.dropdown-menu {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.dropdown-menu.active {
+    max-height: 500px;
+}
+
+.category-item {
+    width: 70px;
+    height: 70px;
+}
+
+.category-item img {
+    width: 30px;
+    margin-bottom: 6px;
+}
+
+.category-item span {
+    font-size: 13px;
+}
+
+/* ==========================
+   دسترسی سریع
+========================== */
+.quick-access-bar {
+    width: 100%;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.shortcut-btn {
+    flex: 1;
+    padding: 12px 5px;
+    background-color: #fff;
+    border-radius: 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shortcut-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 6px 15px var(--primary-shadow);
+}
+
+body.dark-theme .shortcut-btn {
+    background-color: #2a2a2a;
+    color: #eee;
+    border-color: #333;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+body::after {
+    content: "";
+    display: block;
+    height: 800px;
+    width: 0;
+    visibility: hidden;
+    pointer-events: none;
+    clear: both; 
+    float: none;
+}
+
+
+
+
+
+
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background-color: #f5f5f5;
+    color: #181818;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20vh;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    overflow-x: hidden;
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#back-to-top.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) !important;
+}
+
+
+
+
+
+
+
+/* ============================================================
+   ۱. بخش مدیریت اولویت‌ها (Priority Footer & Card)
+============================================================ */
+
+/* کانتینر اصلی - مدیریت موقعیت و نمایش */
+#priority-footer {
+    display: none; /* پیش‌فرض مخفی */
+    position: sticky;
+    top: 80px; /* فاصله از سقف هنگام اسکرول */
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 30px auto;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+/* حالت فعال: وقتی اولویت‌بندی شروع می‌شود */
+body.priority-active #priority-footer {
+    display: block !important;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 50px; /* فاصله از سرچ‌بار در حالت عادی */
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+/* کارت اصلی داخل منو */
+.priority-card {
+    width: 95%;
+    max-width: 1100px;
+    background: white;
+    min-height: 70px;
+    padding: 4px 20px !important;
+    border-radius: 15px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* مدیریت تم تاریک کارت */
+body.dark-theme .priority-card {
+    background: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+}
+
+/* چیدمان داخلی منوی اولویت */
+.priority-manager {
+    display: flex;
+    flex-direction: row-reverse; /* جهت راست به چپ */
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* بخش محتوای اسکرول‌شونده */
+.priority-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.priority-content::-webkit-scrollbar { display: none; }
+
+/* کانتینر حباب‌ها و لیست انتخاب */
+.steps-wrapper, .selection-inner-list {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+    min-width: max-content;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   ۲. المان‌های تعاملی (حباب‌ها، دکمه‌ها و متن‌ها)
+============================================================ */
+
+/* استایل مشترک حباب‌های نارنجی و دکمه‌های خاکستری */
+.step-bubble, .filter-btn-inline {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border: none;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+/* حباب‌های انتخاب شده (نارنجی) */
+.step-bubble {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    box-shadow: 0 3px 8px var(--primary-shadow);
+    gap: 8px;
+    flex-direction: row-reverse !important;
+}
+.step-bubble:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+/* دکمه‌های در حال انتخاب (خاکستری) */
+.filter-btn-inline {
+    background: #e6e6e6;
+    color: #666;
+    cursor: pointer;
+}
+.filter-btn-inline:hover {
+    background: #d0d0d0;
+    color: #333;
+}
+body.dark-theme .filter-btn-inline {
+    background: #333;
+    color: #bbb;
+}
+
+/* اجزای داخلی حباب (شماره و متن) */
+.step-bubble .num {
+    font-size: 10px;
+    background: rgba(0,0,0,0.15);
+    padding: 1px 5px;
+    border-radius: 5px;
+    order: 3;
+}
+.step-bubble .txt { order: 2; }
+.remove-priority {
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+    order: 1;
+    opacity: 0.8;
+}
+.remove-priority:hover { opacity: 1; }
+
+/* دکمه افزودن (پلاس) */
+.add-step-circle {
+    width: 38px;
+    height: 38px;
+    background-color: #fff;
+    border: 2px dashed var(--primary-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+.add-step-circle img { width: 20px; height: 20px; transition: 0.3s; }
+.add-step-circle:hover { background: var(--primary-color); transform: scale(1.05); border-style: solid; }
+.add-step-circle:hover img { filter: brightness(0) invert(1); }
+body.dark-theme .add-step-circle { background-color: #2a2a2a; }
+
+/* متون راهنما */
+.guide-text { width: 100%; text-align: center; color: #999; font-size: 13px; white-space: nowrap; }
+.drag-hint { font-size: 11px; color: #bbb; margin-right: 15px; white-space: nowrap; animation: fadeIn 0.5s ease; }
+
+/* فلش‌های اسکرول */
+.scroll-arrow {
+    width: 24px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 24px; color: var(--primary-color);
+    font-weight: bold; z-index: 5; background: rgba(255,255,255,0.8);
+    transition: 0.3s;
+}
+body.dark-theme .scroll-arrow { background: rgba(30,30,30,0.8); }
+
+/* خط جداکننده دکمه پلاس */
+.priority-actions {
+    display: flex; align-items: center;
+    padding-left: 15px; margin-left: 5px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+}
+body.dark-theme .priority-actions { border-left-color: rgba(255,255,255,0.1); }
+/* ============================================================
+   ۳. شبکه محصولات (Products Grid) - نسخه اصلاح شده
+============================================================ */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    width: 95%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding-bottom: 100px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative;
+    z-index: 10;
+}
+body.priority-active .products-grid { opacity: 1; visibility: visible; transform: translateY(0); }
+
+/* کارت محصول */
+.product-card {
+    background: white; border-radius: 15px; padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    position: relative; /* اضافه شده برای قرارگیری دکمه قلب */
+}
+body.dark-theme .product-card { background: #2a2a2a; color: white; }
+.product-card:hover { transform: translateY(-5px); }
+.product-card img { width: 100%; height: 180px; object-fit: contain; margin-bottom: 10px; }
+.product-card h3 { font-size: 16px; margin: 10px 0; color: #333; }
+body.dark-theme .product-card h3 { color: white; }
+.product-card .price { color: var(--primary-color); font-weight: bold; font-size: 18px; }
+
+/* استایل دکمه قلب */
+.wish-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 5;
+    padding: 0;
+    color: #ccc; /* رنگ پیش‌فرض قلب (خاموش) */
+}
+
+body.dark-theme .wish-btn {
+    background: rgba(50, 50, 50, 0.9);
+    color: #555;
+}
+
+
+/* برای قرمز شدن کامل داخل و بیرون قلب */
+.wish-btn.active svg {
+    fill: #ff4d4d !important; /* رنگ داخل قلب */
+    stroke: #ff4d4d !important; /* رنگ دور قلب */
+}
+
+/* اگر داخل تگ svg از path استفاده شده، مستقیم به آن فرمان می‌دهیم */
+.wish-btn.active svg path {
+    fill: #ff4d4d !important;
+    stroke: #ff4d4d !important;
+}
+
+/* یک انیمیشن کوچک که بفهمی کلیک شده */
+.wish-btn.active {
+    transform: scale(1.2);
+}
+
+
+
+.wish-btn:hover {
+    transform: scale(1.15);
+}
+
+
+
+/* استایل کمکی برای نمایش صحیح محصولات در مودال */
+#wishlist-modal .modal-content {
+    max-width: 900px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#wishlist-items-container {
+    margin-top: 20px;
+    /* اطمینان از اینکه گرید در مودال هم کار می‌کند */
+    display: grid !important; 
+    gap: 15px;
+}
+
+.wish-btn svg {
+    width: 20px;
+    height: 20px;
+    transition: fill 0.3s ease;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2px;
+}
+
+.product-card .spec-tag {
+    display: inline-block; background: #f0f0f0; padding: 2px 8px;
+    border-radius: 5px; font-size: 11px; margin: 2px; color: #555;
+}
+body.dark-theme .product-card .spec-tag { background: #3d3d3d; color: #ccc; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   افزودن به لیست و مورد علاقه ها
+============================================================ */
+
+.list-option:hover {
+    background: #e9ecef !important;
+    transform: translateX(-5px);
+    transition: 0.2s;
+}
+
+.auth-submit-btn {
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+
+
+/* ============================================================
+   ۴. بخش هیرو و بارگذاری (Hero & Loader)
+============================================================ */
+.hero-section { width: 100%; display: flex; justify-content: center; align-items: center; line-height: 0; }
+.hero-image {
+    width: 100%; max-width: 450px; height: auto;
+    transform: translateX(-15px); /* جابه‌جایی به چپ */
+}
+
+#loading-bar-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 6px;
+    background-color: rgba(0, 0, 0, 0.05); z-index: 999999;
+}
+#loading-bar {
+    width: 0%; height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    box-shadow: 0 0 12px var(--primary-shadow);
+    transition: width 0.4s ease-out;
+}
+
+/* انیمیشن‌ها */
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.sortable-ghost { opacity: 0.4; border: 2px dashed #ccc; background: transparent !important; }
+
+/* ریسپانسیو موبایل */
+@media (max-width: 600px) {
+    .hero-image { max-width: 90%; }
+    #priority-footer { top: 60px; } /* فاصله کمتر در موبایل */
+}
+
+
+
+
+
