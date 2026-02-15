@@ -75,7 +75,7 @@ function initApp() {
 db.settings({
     host: "technobuy-gateway.cl0ner.workers.dev",
     ssl: true,
-    experimentalForceLongPolling: true, // اجبار به استفاده از درخواست‌های معمولی HTTP
+
     merge: true
 });
 
@@ -875,6 +875,7 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
 
 
