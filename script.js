@@ -72,12 +72,17 @@ function initApp() {
    db = firebase.firestore();
 
     // این بخش جادوی عبور از فیلتر است
-    db.settings({
-        host: "technobuy-gateway.cl0ner.workers.dev",
-        ssl: true,
-        merge: true
-        experimentalForceLongPolling: true // این خط معجزه سرعت در اینترنت ایران است
-    });
+db.settings({
+    host: "technobuy-gateway.cl0ner.workers.dev",
+    ssl: true,
+    experimentalForceLongPolling: true, // اجبار به استفاده از درخواست‌های معمولی HTTP
+    merge: true
+});
+
+
+
+
+
     setupSearch();     
     loadCategories();  
     renderShortcuts(); 
@@ -870,5 +875,6 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
 
