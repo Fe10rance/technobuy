@@ -76,6 +76,7 @@ function initApp() {
         host: "technobuy-gateway.cl0ner.workers.dev",
         ssl: true,
         merge: true
+        experimentalForceLongPolling: true // این خط معجزه سرعت در اینترنت ایران است
     });
     setupSearch();     
     loadCategories();  
@@ -869,4 +870,5 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
