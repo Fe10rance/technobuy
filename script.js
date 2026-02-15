@@ -68,8 +68,15 @@ function initApp() {
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     }
-    db = firebase.firestore();
     
+   db = firebase.firestore();
+
+    // این بخش جادوی عبور از فیلتر است
+    db.settings({
+        host: "technobuy-gateway.cl0ner.workers.dev",
+        ssl: true,
+        merge: true
+    });
     setupSearch();     
     loadCategories();  
     renderShortcuts(); 
@@ -862,3 +869,4 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
