@@ -73,11 +73,9 @@ function initApp() {
 
     // این بخش جادوی عبور از فیلتر است
 db.settings({
-    host: "technobuy-gateway.cl0ner.workers.dev",
-    ssl: true,
-
-    merge: true
-});
+        host: "technobuy-gateway.cl0ner.workers.dev",
+        ssl: true
+    });
 
 
 
@@ -875,6 +873,7 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
 
 
