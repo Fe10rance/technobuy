@@ -64,31 +64,31 @@ function initApp() {
         measurementId: "G-G88V7MSY0Z"
     };
     
-    // جلوگیری از مقداردهی مجدد اگر قبلاً شده
+    // مقداردهی اولیه فایربیس
     if (!firebase.apps.length) {
         firebase.initializeApp(firebaseConfig);
     }
     
-   db = firebase.firestore();
+    db = firebase.firestore();
 
-    // این بخش جادوی عبور از فیلتر است
-db.settings({
+    // تنظیمات ورکر کلادفلر
+    db.settings({
         host: "technobuy-gateway.cl0ner.workers.dev",
         ssl: true
     });
-
-
-
-
 
     setupSearch();     
     loadCategories();  
     renderShortcuts(); 
     setupPriorityEvents(); 
     
-    // --- این خط رو حتماً اضافه کن ---
-    initUserSystem(); 
+    // لود کردن سیستم کاربران
+    if (typeof initUserSystem === "function") {
+        initUserSystem(); 
+    }
 }
+
+
 
 /* ==========================
     ۲. مدیریت انیمیشن و ریست
@@ -873,6 +873,7 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
 
 
