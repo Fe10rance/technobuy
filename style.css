@@ -34,6 +34,29 @@ body {
 
 
 
+/* تعریف فونت با اسم دقیق فایل‌های تو */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('Fonts/Vazir.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('Fonts/Vazir-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* اعمال فونت به کل سایت */
+* {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+
 
 
 body {
@@ -1143,5 +1166,6 @@ body.dark-theme .product-card .spec-tag { background: #3d3d3d; color: #ccc; }
 /* ============================================================
  پایان لوودینگ قبل از لوود کامل
 ============================================================ */
+
 
 
