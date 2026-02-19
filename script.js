@@ -2,6 +2,37 @@ let authSystem, authDb; // این دو تا رو همین اول تعریف کن
 
 
 
+
+
+
+/* ==========================
+  لوودینگ قبل از لوود کامل
+========================== */
+
+
+// ۱. مدیریت حذف لودینگ بعد از لود کامل
+window.addEventListener('load', function() {
+    const loader = document.getElementById('full-page-loader');
+    setTimeout(() => {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }, 500); // نیم ثانیه مکث برای اطمینان از رندر کامل
+});
+
+// ۲. چک کردن زمان لود (اگر بعد از ۷ ثانیه لود نشد، پیام وی‌پی‌ان ظاهر شود)
+setTimeout(() => {
+    const vpnMsg = document.getElementById('vpn-warning');
+    if (document.getElementById('full-page-loader').style.display !== 'none') {
+        vpnMsg.style.display = 'block';
+    }
+}, 7000); // ۷ ثانیه زمان مناسبی است
+
+
+
+
+
 /* ==========================
     ۰. تنظیمات اولیه و رویدادهای فوری UI
 ========================== */
@@ -873,6 +904,7 @@ window.closeSaveModal = function() {
     const modal = document.getElementById('save-to-list-modal');
     if (modal) modal.style.display = "none";
 };
+
 
 
 
